@@ -6,12 +6,6 @@ cco-mysqldata:
     - ./mysql/mysql-datadir:/var/lib/mysql:rw
     - ./mysql/mysql-autoload:/docker-entrypoint-initdb.d:ro
 
-cco-pgdata:
-  image: tianon/true
-  volumes:
-    - ./pg/pg-datadir:/var/lib/postgresql/data:rw
-    - ./pg/pg-autoload:/docker-entrypoint-initdb.d:ro
-
 cco-mysql:
   image: mysql
   environment:
@@ -20,20 +14,10 @@ cco-mysql:
     - MYSQL_USER=dina
     - MYSQL_PASSWORD=password12
   ports:
-    - "3306:3306"
+    - "13306:3306"
   volumes_from:
     - cco-mysqldata
 
-cco-postgres:
-  image: postgres
-  environment:
-    - POSTGRES_DB=cco
-    - POSTGRES_USER=dina
-    - POSTGRES_PASSWORD=password12
-  ports:
-    - "5432:5432"
-  volumes_from:
-    - cco-pgdata
 
 cco-tools:
   build: ./cco-tools
@@ -41,4 +25,3 @@ cco-tools:
     - ./cco-tools:/usr/src/myapp:rw
   links:
     - cco-mysql
-    - cco-postgres

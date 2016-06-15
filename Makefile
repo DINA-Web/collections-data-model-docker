@@ -9,8 +9,9 @@ build:
 	docker-compose build cco
 
 up: 
+	@echo "Sorry for the 30s below, please fix it with a PR ;)"
 	docker-compose up -d db
-	sleep 10 && docker-compose run cco
+	sleep 30 && docker-compose run cco
 
 connect:
 	@echo "Connecting to CCO database"

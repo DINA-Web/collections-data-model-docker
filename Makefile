@@ -1,7 +1,10 @@
-all: up
+all: build up
 
 up: 
-	docker-compose up -d
+	docker-compose up -d cco-mysql
+
+build:
+	docker-compose build cco-tools
 
 clean: stop rm
 

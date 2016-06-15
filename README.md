@@ -9,9 +9,3 @@ Usage
 Issue this command provided you have installed `docker` and `docker-compose`:
 
     ./up.sh
-
-Questions
-=========
-
-    * Can I use sqlite3 as backend here?
-      - https://github.com/xerial/sqlite-jdbc

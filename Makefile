@@ -1,13 +1,16 @@
-all: build up
+all: init build up
 
-up: 
-	docker-compose up -d db
-	sleep 10 && docker-compose run cco
+
+init:
+	@echo "Pulling code from GitHub"
+	cd cco-tools && git clone https://github.com/Inkimar/cco_poc.git
 
 build:
 	docker-compose build cco
 
-clean: stop rm
+up: 
+	docker-compose up -d db
+	sleep 10 && docker-compose run cco
 
 connect:
 	@echo "Connecting to CCO database"
@@ -15,6 +18,9 @@ connect:
 
 stop:
 	docker-compose stop
+
+clean: stop rm
+	sudo rm -rf cco-tools/cco_poc
 
 rm:
 	docker-compose rm -vf

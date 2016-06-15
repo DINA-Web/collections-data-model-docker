@@ -8,6 +8,7 @@ fs:
 
 db:
   image: mysql:5.6
+#  image: mariadb:10.1.14
   environment:
     - MYSQL_ROOT_PASSWORD=password12
     - MYSQL_DATABASE=cco

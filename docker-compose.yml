@@ -1,13 +1,13 @@
-cco-mysqldata:
+fs:
   image: tianon/true
   volumes:
-    - ./mysql/mysql-shr:/shr:rw
-    - ./mysql/mysql-conf.d:/etc/mysql/conf.d:z
-    - ./mysql/mysql-datadir:/var/lib/mysql:rw
+    - ./mysql/mysql-shr:/shr
+    - ./mysql/mysql-conf.d:/etc/mysql/conf.d
+    - ./mysql/mysql-datadir:/var/lib/mysql
     - ./mysql/mysql-autoload:/docker-entrypoint-initdb.d:ro
 
-cco-mysql:
-  image: mysql
+db:
+  image: mysql:5.6
   environment:
     - MYSQL_ROOT_PASSWORD=password12
     - MYSQL_DATABASE=cco
@@ -16,12 +16,11 @@ cco-mysql:
   ports:
     - "13306:3306"
   volumes_from:
-    - cco-mysqldata
+    - fs
 
-
-cco-tools:
+cco:
   build: ./cco-tools
   volumes:
-    - ./cco-tools:/usr/src/myapp:rw
+    - ./cco-tools:/usr/src/myapp
   links:
-    - cco-mysql
+    - db

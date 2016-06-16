@@ -14,8 +14,8 @@ up:
 	sleep 30 && docker-compose run cco
 
 connect:
-	@echo "Connecting to CCO database"
-	mysql -u dina -ppassword12 -P 13306 -h 127.0.0.1 cco
+	@echo "Connecting to CCO database and display the tables"
+	mysql -u dina -ppassword12 -P 13306 -h 127.0.0.1 cco -e "show tables"
 
 stop:
 	docker-compose stop

@@ -33,7 +33,9 @@ This project provides a `docker-compose`d application with `mysql` and `mariadb`
 10. material_sample       
 11. other_number          
 12. preparation           
-13. taxon          
+13. taxon 
+14. transaction_item
+15. unit
 
 # Table descriptions
 

@@ -3,7 +3,8 @@ all: init build up
 
 init:
 	@echo "Pulling code from GitHub"
-	cd cco-tools && git clone https://github.com/Inkimar/cco_poc.git
+	# cd cco-tools && git clone https://github.com/Inkimar/cco_poc.git
+	cd cco-tools && git clone https://github.com/DINA-Web/cco_poc.git
 
 build:
 	docker-compose build cco

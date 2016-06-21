@@ -1,23 +1,32 @@
 Dockerized Complex Collections Object data model
 ================================================
 
-This project provides a `docker-compose`d application with `mysql` and `mariadb` database containers and a `cco` container which builds and installs the `cco_poc` data model, the fork from here: [Complex Collections Object liquibase project](https://github.com/DINA-Web/cco_poc)
+This project provides a `docker-compose`d application which builds and installs the `cco_poc` data model from a liquibase definitions file. It uses `mysql` or `mariadb` database engine containers and a `cco` container to create the database schema.
+
+The DINA-Web Collections data model used comes from this repo: [DINA-Web Collections data model proof-of-concept liquibase project](https://github.com/DINA-Web/cco_poc)
 
 # Usage
 
-	# to build and start services
+	# to build and start services:
 	make
 
-	# to connect to the database
+	# to connect to the database:
 	make connect
 
-	# to clean up
+	# to stop, remove and clean up services/resources:
 	make clean
 
-	# NB: to switch to mariadb, edit the 
-	# docker-compose.yml file and uncomment
-	# the commented line that references 
-	# the mariadb image
+	# to make a backup of the datadir (shuts down the db engine, 
+	# makes the backup, then starts it):
+	make backup-datadir
+	
+	# to make a backup into sql format (with running system, 
+	# using a single transaction):
+	make backup-sqldump
+
+## NB: switching database engine
+
+To switch to mariadb, edit the `docker-compose.yml` file and uncomment the commented line that references the mariadb image.
 
 # Tables
 

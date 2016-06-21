@@ -17,7 +17,6 @@ services:
 
   cco:
     build: ./cco-tools
-    entrypoint: sh -c "./wait-for-it.sh --timeout=40 db:3306 && mvn clean install"
     volumes:
       - ./cco-tools:/usr/src/myapp
     depends_on:

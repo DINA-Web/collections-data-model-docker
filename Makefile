@@ -25,7 +25,7 @@ up:
 
 connect:
 	@export $(cat .env | xargs) > /dev/null
-	@echo "Connecting to db..."
+	@echo "Connecting to db... pls enter 'show tables' at the prompt."
 	docker-compose run --rm db sh -c \
 		"mysql -h db -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) -D $(MYSQL_DATABASE)"
 
@@ -40,8 +40,8 @@ backup-datadir:
 backup-sqldump:
 	@export $(cat .env | xargs) > /dev/null
 	@echo "Backing up db using sql dump..."
-	docker-compose run -u $(USR) --rm db sh -c \
-		"mysqldump -h db -u root -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE)" > backups/db-dump-$(TS).sql
+	docker-compose run --rm db sh -c \
+		"mysqldump -h db -u root --single-transaction -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE)" > backups/db-dump-$(TS).sql
 
 stop:
 	docker-compose stop

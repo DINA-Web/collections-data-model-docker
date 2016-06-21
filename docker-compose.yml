@@ -1,27 +1,34 @@
-fs:
-  image: tianon/true
-  volumes:
-    - ./mysql/mysql-shr:/shr
-    - ./mysql/mysql-conf.d:/etc/mysql/conf.d
-    - ./mysql/mysql-datadir:/var/lib/mysql
-    - ./mysql/mysql-autoload:/docker-entrypoint-initdb.d:ro
+version: '2'
 
-db:
-  image: mysql:5.6
-#  image: mariadb:10.1.14
-  environment:
-    - MYSQL_ROOT_PASSWORD=password12
-    - MYSQL_DATABASE=cco
-    - MYSQL_USER=dina
-    - MYSQL_PASSWORD=password12
-  ports:
-    - "13306:3306"
-  volumes_from:
-    - fs
+services:
 
-cco:
-  build: ./cco-tools
-  volumes:
-    - ./cco-tools:/usr/src/myapp
-  links:
-    - db
+  fs:
+    image: tianon/true
+    volumes:
+      - ./mysql-datadir:/var/lib/mysql
+      - ./backups:/backups
+
+  db:
+    image: mariadb:10.1.14
+#    image: mysql:5.7
+    env_file: .env
+    volumes_from:
+      - fs
+
+  cco:
+    build: ./cco-tools
+    entrypoint: sh -c "./wait-for-it.sh --timeout=40 db:3306 && mvn clean install"
+    volumes:
+      - ./cco-tools:/usr/src/myapp
+    depends_on:
+      - db
+    links:
+      - db
+
+  backup:
+    image: alpine
+    command: sh -c "tar cvfz /tmp/db-backup.tgz /var/lib/mysql"
+    volumes_from:
+      - db
+
+

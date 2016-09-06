@@ -1,5 +1,5 @@
 include .env
-NAME = dina-web/collections-data-model
+# NAME = dina-web/collections-data-model 
 VERSION = $(TRAVIS_BUILD_ID)
 ME = $(USER)
 HOST = beta.dina-web.net
@@ -36,7 +36,7 @@ backup-datadir:
 	docker-compose run --rm backup sh -c \
 		"tar cvfz /backups/db-datadir-$(TS).tgz /var/lib/mysql"
 	docker-compose start db
-	sudo chown $(USER):$(USER) backups/db-datadir-$(TS).tgz
+	sudo chown $(ME):$(ME) backups/db-datadir-$(TS).tgz
 
 backup-sqldump:
 	@export $(cat .env | xargs) > /dev/null

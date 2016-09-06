@@ -1,3 +1,4 @@
+include .env
 NAME = dina-web/collections-data-model
 VERSION = $(TRAVIS_BUILD_ID)
 ME = $(USER)

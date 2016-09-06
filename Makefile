@@ -1,5 +1,4 @@
 include .env
-# NAME = dina-web/collections-data-model 
 VERSION = $(TRAVIS_BUILD_ID)
 ME = $(USER)
 HOST = beta.dina-web.net
@@ -13,7 +12,7 @@ init:
 
 build:
 	@echo "Pulling source code for dependencies from GitHub"
-	cd cco-tools && git clone https://github.com/DINA-Web/cco_poc.git
+	cd cco-tools && git clone https://github.com/DINA-Web/$(NAME).git
 	cd cco-tools && curl -L -s -o wait-for-it.sh \
 		https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
 		chmod +x wait-for-it.sh
@@ -48,10 +47,11 @@ stop:
 	docker-compose stop
 
 clean: stop rm
-	@echo "Removing code and persisted db data..."
-	sudo rm -rf cco-tools/cco_poc cco-tools/wait-for-it.sh
+	@echo "Removing code and ..."
+	sudo rm -rf cco-tools/$(NAME) cco-tools/wait-for-it.sh
 
 rm:
+	@echo "Removing persisted db data..."
 	docker-compose rm -vf
 	sudo rm -rf mysql-datadir
 	sudo rm -rf backups

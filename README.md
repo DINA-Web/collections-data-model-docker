@@ -27,7 +27,7 @@ The DINA-Web Collections data model used comes from this repo: [DINA-Web Collect
 ## NB: switching database engine
 
 To switch to mariadb, edit the `docker-compose.yml` file and uncomment the commented line that references the mariadb image.<p>
-after 'make connect' you can check the database by runing commands i.e; 'show tables', 'desc taxon' 
+After running the 'make connect' you can validate the database by running commands i.e; 'show tables', 'desc taxon' 
 
 # Tables
 

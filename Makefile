@@ -40,8 +40,15 @@ backup-datadir:
 backup-sqldump:
 	@export $(cat .env | xargs) > /dev/null
 	@echo "Backing up db using sql dump..."
-	docker-compose run --rm db sh -c \
+	@docker-compose run --rm db sh -c \
 		"mysqldump -h db -u root --single-transaction -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE)" > backups/db-dump-$(TS).sql
+	@cp backups/db-dump-$(TS).sql backups/dump.sql
+
+restore-sqldump:
+	@export $(cat .env | xargs) > /dev/null
+	@echo "Restoring using sql dump..."
+	@docker-compose run --rm db sh -c \
+		"mysql -h db -u root -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE) < backups/dump.sql"
 
 stop:
 	docker-compose stop

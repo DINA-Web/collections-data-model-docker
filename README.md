@@ -1,9 +1,14 @@
 Dockerized Complex Collections Object data model
 ================================================
 
-This project provides a `docker-compose`d application which builds and installs the `cco_poc` data model from a liquibase definitions file. It uses `mysql` or `mariadb` database engine containers and a `cco` container to create the database schema.
+**pre-req:** </br>
+You must have docker version 1.8 or higher ( check your version by running 'docker-compose -version' )</br>
 
-The DINA-Web Collections data model used comes from this repo: [DINA-Web Collections data model proof-of-concept liquibase project](https://github.com/DINA-Web/cco_poc)
+**what this project does**</br>
+This project provides a `docker-compose`d application which builds and installs the `cco_poc` data model from a liquibase definitions file. </br>
+It uses `mysql` or `mariadb` database engine containers and a `cco` container to create the database schema.
+
+The DINA-Web Collections data model (sql-statements) used comes from this repo: </br> [DINA-Web Collections data model proof-of-concept liquibase project](https://github.com/DINA-Web/cco_poc)
 
 # Usage
 

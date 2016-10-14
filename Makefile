@@ -24,7 +24,6 @@ up:
 	docker-compose run cco
 
 connect:
-	@export $(cat .env | xargs) > /dev/null
 	@echo "Connecting to db... pls enter 'show tables' at the prompt."
 	docker-compose run --rm db sh -c \
 		"mysql -h db -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) -D $(MYSQL_DATABASE)"
@@ -38,14 +37,12 @@ backup-datadir:
 	sudo chown $(ME):$(ME) backups/db-datadir-$(TS).tgz
 
 backup-sqldump:
-	@export $(cat .env | xargs) > /dev/null
 	@echo "Backing up db using sql dump..."
 	@docker-compose run --rm db sh -c \
 		"mysqldump -h db -u root --single-transaction -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE)" > backups/db-dump-$(TS).sql
 	@cp backups/db-dump-$(TS).sql backups/dump.sql
 
 restore-sqldump:
-	@export $(cat .env | xargs) > /dev/null
 	@echo "Restoring using sql dump..."
 	@docker-compose run --rm db sh -c \
 		"mysql -h db -u root -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE) < backups/dump.sql"

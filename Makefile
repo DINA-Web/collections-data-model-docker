@@ -37,7 +37,7 @@ backup-datadir:
 	sudo chown $(ME):$(ME) backups/db-datadir-$(TS).tgz
 
 backup-sqldump:
-	@echo "Backing up db using sql dump..."
+	@echo "Backing up db using sql dump...(dump.sql is always the dump with the latest timestamp)"
 	@docker-compose run --rm db sh -c \
 		"mysqldump -h db -u root --single-transaction -p$(MYSQL_ROOT_PASSWORD) $(MYSQL_DATABASE)" > backups/db-dump-$(TS).sql
 	@cp backups/db-dump-$(TS).sql backups/dump.sql

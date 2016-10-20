@@ -29,6 +29,19 @@ The DINA-Web Collections data model (sql-statements) used comes from this repo: 
 	# using a single transaction):
 	make backup-sqldump
 
+# Loading data and backups
+
+To populate the schema with data, the `Makefile` provides two targets:
+
+	make backup-sqldump  # backs up with timestamp using mysqldump
+	make restore-sqldump  # restores using latest sql dump
+
+This means you can populate the database using your preferred method of loading data.
+
+You can run or schedule the `make backup-sqldump` command at any time to dump the schema with data in it.
+
+You can restore that data from any dump into a fresh instance of the database using `make restore-sqldump`, it will use the latest dump, see the `Makefile` for details.
+
 ## NB: switching database engine
 
 To switch from mariadb to mysql, edit the `docker-compose.yml` file and uncomment the commented line that references the other image.

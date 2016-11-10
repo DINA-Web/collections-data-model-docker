@@ -19,9 +19,8 @@ services:
     build: ./cco-tools
     volumes:
       - ./cco-tools:/usr/src/myapp
+      - ./repository:/root/.m2/repository
     depends_on:
-      - db
-    links:
       - db
 
   backup:

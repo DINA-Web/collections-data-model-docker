@@ -9,13 +9,14 @@ all: init build up
 
 init:
 	mkdir -p mysql-datadir backups
-
-build:
 	@echo "Pulling source code for dependencies from GitHub"
-	cd cco-tools && git clone https://github.com/DINA-Web/$(NAME).git
+	#cd cco-tools && git clone https://github.com/DINA-Web/$(NAME).git
+	cd cco-tools && git clone https://github.com/chicoreus/cco_poc collections-data-model
 	cd cco-tools && curl -L -s -o wait-for-it.sh \
 		https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
 		chmod +x wait-for-it.sh
+
+build:
 	docker-compose build cco
 
 up: 
@@ -27,6 +28,12 @@ connect:
 	@echo "Connecting to db... pls enter 'show tables' at the prompt."
 	docker-compose run --rm db sh -c \
 		"mysql -h db -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) -D $(MYSQL_DATABASE)"
+
+show-tables:
+	@echo "Connecting to db... pls enter 'show tables' at the prompt."
+	docker-compose run --rm db sh -c \
+		"mysql -h db -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) -D $(MYSQL_DATABASE) -e 'show tables;'"
+
 
 backup-datadir:
 	@echo "Backing up db datadir..."

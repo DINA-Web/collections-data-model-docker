@@ -52,92 +52,92 @@ After running the 'make connect' you can validate the database by running comman
 
 You can run `make show-tables` to list the tables, or use `make connect` and issue any valid command there:
 
-+-------------------------------+
-| Tables_in_cco                 |
-+-------------------------------+
-| DATABASECHANGELOG             |
-| DATABASECHANGELOGLOCK         |
-| accession                     |
-| accessionagent                |
-| address                       |
-| addressofrecord               |
-| agent                         |
-| agentgeography                |
-| agentlink                     |
-| agentname                     |
-| agentnumberpattern            |
-| agentreference                |
-| agentrelation                 |
-| agentspeciality               |
-| agentteam                     |
-| attachment                    |
-| attachmentencumberance        |
-| attachmentrelation            |
-| auditlog                      |
-| biologicalattribute           |
-| borrow                        |
-| catalogeditem                 |
-| catalognumberseries           |
-| catitemencumberance           |
-| codetableint                  |
-| collectingevent               |
-| collection                    |
-| collector                     |
-| coordinate                    |
-| ctageclass                    |
-| ctbiologicalattributetype     |
-| ctcoordinatetype              |
-| ctelectronicaddresstype       |
-| ctencumberancetype            |
-| ctlengthunit                  |
-| ctmassunit                    |
-| ctnumericattributetype        |
-| ctpicklistitem                |
-| ctransaction                  |
-| ctrelationshiptype            |
-| cttextattributetype           |
-| deaccession                   |
-| electronicaddress             |
-| encumberance                  |
-| eventdate                     |
-| geography                     |
-| geographytreedef              |
-| geographytreedefitem          |
-| geologictimeperiod            |
-| geologictimeperiodtreedef     |
-| geologictimeperiodtreedefitem |
-| georeference                  |
-| gift                          |
-| identifiableitem              |
-| identification                |
-| inference                     |
-| loan                          |
-| locality                      |
-| localityencumberance          |
-| materialsample                |
-| numericattribute              |
-| othernumber                   |
-| paleocontext                  |
-| picklist                      |
-| picklistitemint               |
-| preparation                   |
-| principal                     |
-| repositoryagreement           |
-| scope                         |
-| storage                       |
-| storagetreedef                |
-| storagetreedefitem            |
-| systemuser                    |
-| systemuserprincipal           |
-| taxon                         |
-| taxonencumberance             |
-| taxontreedef                  |
-| taxontreedefitem              |
-| textattribute                 |
-| transactionagent              |
-| transactionitem               |
-| unit                          |
-+-------------------------------+
+	+-------------------------------+
+	| Tables_in_cco                 |
+	+-------------------------------+
+	| DATABASECHANGELOG             |
+	| DATABASECHANGELOGLOCK         |
+	| accession                     |
+	| accessionagent                |
+	| address                       |
+	| addressofrecord               |
+	| agent                         |
+	| agentgeography                |
+	| agentlink                     |
+	| agentname                     |
+	| agentnumberpattern            |
+	| agentreference                |
+	| agentrelation                 |
+	| agentspeciality               |
+	| agentteam                     |
+	| attachment                    |
+	| attachmentencumberance        |
+	| attachmentrelation            |
+	| auditlog                      |
+	| biologicalattribute           |
+	| borrow                        |
+	| catalogeditem                 |
+	| catalognumberseries           |
+	| catitemencumberance           |
+	| codetableint                  |
+	| collectingevent               |
+	| collection                    |
+	| collector                     |
+	| coordinate                    |
+	| ctageclass                    |
+	| ctbiologicalattributetype     |
+	| ctcoordinatetype              |
+	| ctelectronicaddresstype       |
+	| ctencumberancetype            |
+	| ctlengthunit                  |
+	| ctmassunit                    |
+	| ctnumericattributetype        |
+	| ctpicklistitem                |
+	| ctransaction                  |
+	| ctrelationshiptype            |
+	| cttextattributetype           |
+	| deaccession                   |
+	| electronicaddress             |
+	| encumberance                  |
+	| eventdate                     |
+	| geography                     |
+	| geographytreedef              |
+	| geographytreedefitem          |
+	| geologictimeperiod            |
+	| geologictimeperiodtreedef     |
+	| geologictimeperiodtreedefitem |
+	| georeference                  |
+	| gift                          |
+	| identifiableitem              |
+	| identification                |
+	| inference                     |
+	| loan                          |
+	| locality                      |
+	| localityencumberance          |
+	| materialsample                |
+	| numericattribute              |
+	| othernumber                   |
+	| paleocontext                  |
+	| picklist                      |
+	| picklistitemint               |
+	| preparation                   |
+	| principal                     |
+	| repositoryagreement           |
+	| scope                         |
+	| storage                       |
+	| storagetreedef                |
+	| storagetreedefitem            |
+	| systemuser                    |
+	| systemuserprincipal           |
+	| taxon                         |
+	| taxonencumberance             |
+	| taxontreedef                  |
+	| taxontreedefitem              |
+	| textattribute                 |
+	| transactionagent              |
+	| transactionitem               |
+	| unit                          |
+	+-------------------------------+
 
 # Table descriptions
 

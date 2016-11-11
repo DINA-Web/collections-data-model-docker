@@ -1,14 +1,11 @@
 Dockerized Complex Collections Object data model
 ================================================
 
-**pre-req:** </br>
-You must have docker version 1.8 or higher ( check your version by running 'docker-compose -version' )</br>
+You must have docker version 1.8 or higher ( check your version by running 'docker-compose -version' )
 
-**what this project does**</br>
-This project provides a `docker-compose`d application which builds and installs the `cco_poc` data model from a liquibase definitions file. </br>
-It uses `mysql` or `mariadb` database engine containers and a `cco` container to create the database schema.
+This project provides a `docker-compose` application which builds and installs the DINA-Web Collections data model from https://github.com/chicoreus/cco_poc/tree/master/src/main/resources/edu/harvard/huh/specify/datamodel/cco_full/db
 
-The DINA-Web Collections data model (sql-statements) used comes from this repo: </br> [DINA-Web Collections data model proof-of-concept liquibase project](https://github.com/DINA-Web/cco_poc)
+It uses the `mysql` or `mariadb` database engine containers and a `cco` container to create the database schema.
 
 # Usage
 
@@ -17,6 +14,9 @@ The DINA-Web Collections data model (sql-statements) used comes from this repo: 
 
 	# to connect to the database:
 	make connect
+
+	# to list tables
+	make show-tables
 
 	# to stop, remove and clean up services/resources:
 	make clean
@@ -50,38 +50,95 @@ After running the 'make connect' you can validate the database by running comman
 
 # Tables
 
-1. agent                 
-1. catalog_number_series 
-1. cataloged_item        
-1. col_transaction       
-1. collecting_event      
-1. event_date            
-1. identifiable_item     
-1. identification        
-1. locality              
-1. material_sample       
-1. other_number          
-1. preparation           
-1. taxon 
-1. transaction_item
-1. unit
+You can run `make show-tables` to list the tables, or use `make connect` and issue any valid command there:
+
+	+-------------------------------+
+	| Tables_in_cco                 |
+	+-------------------------------+
+	| DATABASECHANGELOG             |
+	| DATABASECHANGELOGLOCK         |
+	| accession                     |
+	| accessionagent                |
+	| address                       |
+	| addressofrecord               |
+	| agent                         |
+	| agentgeography                |
+	| agentlink                     |
+	| agentname                     |
+	| agentnumberpattern            |
+	| agentreference                |
+	| agentrelation                 |
+	| agentspeciality               |
+	| agentteam                     |
+	| attachment                    |
+	| attachmentencumberance        |
+	| attachmentrelation            |
+	| auditlog                      |
+	| biologicalattribute           |
+	| borrow                        |
+	| catalogeditem                 |
+	| catalognumberseries           |
+	| catitemencumberance           |
+	| codetableint                  |
+	| collectingevent               |
+	| collection                    |
+	| collector                     |
+	| coordinate                    |
+	| ctageclass                    |
+	| ctbiologicalattributetype     |
+	| ctcoordinatetype              |
+	| ctelectronicaddresstype       |
+	| ctencumberancetype            |
+	| ctlengthunit                  |
+	| ctmassunit                    |
+	| ctnumericattributetype        |
+	| ctpicklistitem                |
+	| ctransaction                  |
+	| ctrelationshiptype            |
+	| cttextattributetype           |
+	| deaccession                   |
+	| electronicaddress             |
+	| encumberance                  |
+	| eventdate                     |
+	| geography                     |
+	| geographytreedef              |
+	| geographytreedefitem          |
+	| geologictimeperiod            |
+	| geologictimeperiodtreedef     |
+	| geologictimeperiodtreedefitem |
+	| georeference                  |
+	| gift                          |
+	| identifiableitem              |
+	| identification                |
+	| inference                     |
+	| loan                          |
+	| locality                      |
+	| localityencumberance          |
+	| materialsample                |
+	| numericattribute              |
+	| othernumber                   |
+	| paleocontext                  |
+	| picklist                      |
+	| picklistitemint               |
+	| preparation                   |
+	| principal                     |
+	| repositoryagreement           |
+	| scope                         |
+	| storage                       |
+	| storagetreedef                |
+	| storagetreedefitem            |
+	| systemuser                    |
+	| systemuserprincipal           |
+	| taxon                         |
+	| taxonencumberance             |
+	| taxontreedef                  |
+	| taxontreedefitem              |
+	| textattribute                 |
+	| transactionagent              |
+	| transactionitem               |
+	| unit                          |
+	+-------------------------------+
 
 # Table descriptions
 
-Table | Definition | Note
-------- | ------------------ | -------------
-agent | a person or organization with some role related to natural science collections. |  Not fully specified.
-catalog_number_series  | A sequence of numbers of codes assigned as catalog numbers to material held in a natural science collection. | This entity is not fully normalized.
-cataloged_item | The application of a catalog number out of some catalog number series. |  --
-col_transaction | A record of the movement of a set of specimens in or out of a collection, e.g. loan, accession, outgoing gift, deaccession, borrow. |  Table is only minimally specified.
-collecting_event  | An event in which an occurrance was observed in the wild, and typically, for a natural science collection, a voucher was collected. |  --
-event_date | A span of time in which some event occurred. |  --
-identifiable_item  |  A component of a unit for which a scientific identification can be made. |  --
-identification | The application of a scientific name by some agent at some point in time to an identifiable item. |  --
-locality | A place. | Table is only minimally specified. 
-material_sample | See DarwinCore. |  --
-other_number | A number or code associated with a specimen that is not known to be its catalog number |  --
-preparation | A physical artifact that could participate in a transaction, e.g. be sent in a loan. |  Does not specify preparation history or conservation history, additional entities are needed for these.
-taxon | A scientific name string that may be curated to be linked to a nomeclatural act |  --
-transaction_item | The participation of a preparation in a transaction (e.g. a loan). |  Table is only minimally specified.
-unit | Logical unit that was collected or observed in a collecting event. |  --
+Tables are described in https://github.com/chicoreus/cco_poc in https://github.com/chicoreus/cco_poc/blob/master/src/main/resources/edu/harvard/huh/specify/datamodel/cco_full/db/tables.sql
